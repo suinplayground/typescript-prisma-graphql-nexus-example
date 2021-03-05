@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Invoice {
+  id          Int           @id @default(autoincrement())
+  total       Int
+  billingDate DateTime
+  items       InvoiceItem[]
+}
+
+model InvoiceItem {
+  id        Int     @id @default(autoincrement())
+  name      String
+  price     Int
+  quantity  Int
+  total     Int
+  invoice   Invoice @relation(fields: [invoiceId], references: [id])
+  invoiceId Int
+}

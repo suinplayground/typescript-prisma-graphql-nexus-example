@@ -1,0 +1,6 @@
+# PMS
+package-lock.json
+pnpm-lock.yaml
+
+# Generated files
+*.js
